@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="emailGenApp">
+<head>
+	<meta charset="utf-8">
+	<title>DUU Blast Generator</title>
+	<link rel="stylesheet" href="style.css">
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/g/jquery.ui@1.10%28jquery.ui.core.min.js+jquery.ui.widget.min.js+jquery.ui.mouse.min.js+jquery.ui.sortable.min.js%29"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.4/sortable.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+		<script type="text/javascript" src="controllers.js"></script>
+
+	</head>
+
+	<body id="home" ng-controller="EmailGenCtrl">
+
+		<h1>DUU Email Generator</h1>
+		<input type="file" id="csv-input"> <button id="download-email" ng-click="saveHTML()"> Download Email </button>
+		<br />
+		<br />
+		Top Blurb: 
+		<br />
+		<textarea ng-model="blurb" value=""></textarea>
+
+		<ul ui-sortable ng-model="events">
+			<li class="event" ng-repeat="event in events">{{event["Event Title"]}}
+			<div>
+				Blurb: 
+				<br />
+				<textarea ng-model="event['Event Blurb']"></textarea>
+				<br />
+				Links: 
+				<br />
+				<input ng-model="event['Hyperlinks to Include (if multiple, separate by commas)']" />
+				<br />
+				Image: 
+				<br />
+				<input ng-model="event['image']" />
+			</div>
+			</li>
+		</ul>
+
+		<div id="generated-email">
+			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+			<html>
+			<head>
+
+				<title>DUU Blast</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<!--[if !mso]><!-->
+				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+				<!--<![endif]-->
+
+				<style type="text/css">
+
+					.ReadMsgBody { width: 100%; background-color: #F6F6F6; }
+					.ExternalClass { width: 100%; background-color: #F6F6F6; }
+					body { width: 100%; background-color: #f6f6f6; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; font-family: Arial, Times, serif }
+					table { border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+
+					@-ms-viewport{ width: device-width; }
+
+					@media only screen and (max-width: 639px){
+						.wrapper{ width:100%;  padding: 0 !important; }
+					}
+
+					@media only screen and (max-width: 480px){
+						.centerClass{ margin:0 auto !important; }
+						.imgClass{ width:100% !important; height:auto; }
+						.wrapper{ width:320px; padding: 0 !important; } 
+						.container{ width:300px;  padding: 0 !important; }
+						.mobile{ width:300px; display:block; padding: 0 !important; text-align:center !important;}
+						.mobile50{ width:300px; padding: 0 !important; text-align:center; }
+						*[class="mobileOff"] { width: 0px !important; display: none !important; }
+						*[class*="mobileOn"] { display: block !important; max-height:none !important; }
+					}
+
+
+					.content { 
+
+					}
+
+					.duuheader {
+						width: 100%;
+						background-color: #001A57;
+						text-align: center;
+						height: 100px;
+					}
+
+				</style>
+
+    <!--[if gte mso 15]>
+    <style type="text/css">
+        table { font-size:1px; line-height:0; mso-margin-top-alt:1px;mso-line-height-rule: exactly; }
+        * { mso-line-height-rule: exactly; }
+    </style>
+    <![endif]-->
+
+</head>
+<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" style="background-color:#F6F6F6; font-family:Arial,serif; margin:0; padding:0; min-width: 100%; -webkit-text-size-adjust:none; -ms-text-size-adjust:none;">
+
+	<!--[if !mso]><!-- -->
+	<img style="min-width:640px; display:block; margin:0; padding:0" class="mobileOff" width="640" height="1" src="http://s23.postimg.org/rc3d9uryv/spacer.gif">
+	<!--<![endif]-->
+
+	<div class="duuheader"><img height="100px" src="http://s18.postimg.org/edkef33zd/insta64.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="100px" src="http://s18.postimg.org/e22y2bnjd/twitter64.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://s18.postimg.org/eu5m1irqd/logo.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="100px" src="http://s18.postimg.org/kwd8s0g6h/fb64.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="100px" src="http://s18.postimg.org/mlmc02vvt/email64.png" /></div>
+	<!-- Start Background -->
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F6F6F6">
+		<tr>
+			<td width="100%" valign="top" align="center">
+				<!-- Start Wrapper  -->
+				<table width="640" cellpadding="0" cellspacing="0" border="0" class="wrapper" bgcolor="#FFFFFF">
+					<tr>
+						<td height="10" style="font-size:10px; line-height:10px;">   </td><!-- Spacer -->
+					</tr>
+					<tr>
+						<td align="center">
+
+							<!-- Start Container  -->
+							<table width="600" cellpadding="0" cellspacing="0" border="0" class="container">
+								<tr>
+									<td width="600" class="mobile" style="font-family:arial; font-size:12px; line-height:18px;">
+										{{blurb}}
+									</td>
+								</tr>
+							</table>
+							<!-- Start Container  -->                   
+
+						</td>
+					</tr>
+					<tr>
+						<td height="10" style="font-size:10px; line-height:10px;"> </td><!-- Spacer -->
+					</tr>                        
+				</table> 
+				<table width="640" cellpadding="0" cellspacing="0" border="0" class="wrapper" bgcolor="#FFFFFF">
+					<tr>
+						<td height="10" style="font-size:10px; line-height:10px;"> </td><!-- Spacer -->
+					</tr>
+					<tr>
+						<td align="center">
+
+							<!-- Start Container  -->
+							<table width="600" cellpadding="0" cellspacing="0" border="0" class="container">
+								<tr>
+								<td ng-repeat="event in events.slice(0,2)" width="300" class="mobile content" style="font-family:arial; font-size:12px; line-height:18px;">
+										<!-- Copy paste this into a td tag -->
+										<div class="content">
+											<div class="event_logo" style="width: 50%; margin: 0 auto;">
+												<img src="{{event['image']}}" alt="Event logo" width="100" height="100">
+											</div>
+											<div class="event_title" style="width: 50%; margin: 0 auto;">
+												<h3>
+													{{event.title}}
+												</h3>
+											</div>
+
+											<p class="event_summary" style="width: 50%; margin: 0 auto;">
+												{{event["Event Blurb"].substring(0,100)}}
+											</p>
+
+											<div class="event_link" align="right">
+												<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">Learn More</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<!-- Start Container  -->                   
+
+						</td>
+					</tr>
+					<tr>
+						<td height="10" style="font-size:10px; line-height:10px;"> </td><!-- Spacer -->
+					</tr>                        
+				</table> 
+				<!-- End Wrapper  --> 
+				<!-- Start Wrapper  -->
+
+				<table width="640" cellpadding="0" cellspacing="0" border="0" class="wrapper" bgcolor="#FFFFFF">
+					<tr>
+						<td height="10" style="font-size:10px; line-height:10px;"> </td> <!-- Spacer -->
+					</tr>
+					<tr>
+						<td align="center">
+
+							<!-- Start Container  -->
+							<table width="600" cellpadding="0" cellspacing="0" border="0" class="container">
+								<tr>
+									<td ng-repeat="event in events.slice(2,5)" width="200" class="mobile content" style="font-family:arial; font-size:12px; line-height:18px;">
+										<div class="content">
+											<div class="event_logo" style="width: 50%; margin: 0 auto;">
+												<img src="{{event['image']}}" alt="Event logo" width="100" height="100">
+											</div>
+											<div class="event_title" style="width: 50%; margin: 0 auto;">
+												<h3>
+													{{event.title}}
+												</h3>
+											</div>
+
+											<p class="event_summary" style="width: 50%; margin: 0 auto;">
+												{{event["Event Blurb"].substring(0,100)}}
+											</p>
+
+											<div class="event_link" align="right">
+												<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">Link</a>
+											</div>
+										</div>
+									</td>           
+									</tr>
+								</table>
+								<!-- Start Container  -->                   
+
+							</td>
+						</tr>
+						<tr>
+							<td height="10" style="font-size:10px; line-height:10px;"> </td> <!-- Spacer -->
+						</tr>                        
+					</table> 
+					<!-- End Wrapper  --> 
+					<!-- Start Wrapper  -->
+					<table width="640" cellpadding="0" cellspacing="0" border="0" class="wrapper" bgcolor="#FFFFFF">
+						<tr>
+							<td height="10" style="font-size:10px; line-height:10px;"> </td><!-- Spacer -->
+						</tr>
+						<tr>
+							<td align="center">
+
+								<!-- Start Container  -->
+								<table width="600" cellpadding="0" cellspacing="0" border="0" class="container">
+									<tr>
+										<td ng-repeat="event in events.slice(5, 9)" width="150" class="mobile content" style="font-family:arial; font-size:12px; line-height:18px;">
+											<!-- Copy paste this into a td tag -->
+											<div class="content">
+												<div class="event_logo" style="width: 50%; margin: 0 auto;">
+													<img src="{{event['image']}}" alt="Event logo" width="100" height="100">
+												</div>
+												<div class="event_title" style="width: 50%; margin: 0 auto;">
+													<h3>
+														{{event.title}}
+													</h3>
+												</div>
+
+												<p class="event_summary" style="width: 50%; margin: 0 auto;">
+													{{event["Event Blurb"].substring(0,100)}}
+												</p>
+
+												<div class="event_link" align="right">
+													<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">Link</a>
+												</div>
+											</div>
+										</td>  
+									</tr>
+								</table>
+								<!-- Start Container  -->                   
+
+							</td>
+						</tr>
+						<tr>
+							<td height="10" style="font-size:10px; line-height:10px;"> </td><!-- Spacer -->
+						</tr>                        
+					</table> 
+					<!-- End Wrapper  --> 
+				</td>
+			</tr>
+		</table>
+		<!-- End Background -->
+
+	</body>
+	</html>
+</div>
+
+</body>
+</html>
