@@ -1,4 +1,4 @@
-var emailGenApp = angular.module('emailGenApp', ['ui.sortable']);
+var emailGenApp = angular.module('emailGenApp', ['ui.sortable', 'ngMaterial']);
 
 emailGenApp.controller('EmailGenCtrl', function($scope) {
 	$scope.events = [];
@@ -13,11 +13,13 @@ emailGenApp.controller('EmailGenCtrl', function($scope) {
 
 	$("#csv-input").on('change', function() {
 		reader.readAsText($("#csv-input")[0].files[0]);
+		$scope.selFile=$("#csv-input")[0].files[0].name;
+		console.log($scope.selFile);
 	});
 
 	$scope.saveHTML = function() {
 		var blob = new Blob([$("#generated-email").html()], {type: "text/html;charset=utf-8"});
 		saveAs(blob, "email.html");
-		alert("hi")
+		//alert("hi")
 	}
 });

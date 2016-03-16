@@ -1,6 +1,5 @@
 .event {
-	list-style: none;
-	border: 1px solid black;
+	list-style: none; 
 	border-radius: 5px;
 	width: 100;
 	padding: 5px;
@@ -9,4 +8,9 @@
 
 .event:hover {
 	cursor: move;
+}
+body {
+	margin: 10px;
+	margin-left: 20px;
+	margin-right:20px;
 }
