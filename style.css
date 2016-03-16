@@ -14,3 +14,8 @@ body {
 	margin-left: 20px;
 	margin-right:20px;
 }
+md-sidenav, md-sidenav.md-locked-open, md-sidenav.md-closed.md-locked-open-add-active {
+ min-width: 200px !important;
+ width: 500px!important;
+ max-width: 500px !important;
+}
