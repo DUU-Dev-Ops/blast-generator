@@ -7,7 +7,8 @@ emailGenApp.controller('EmailGenCtrl', function($scope) {
 	
 
 	reader.onload = function(e) {
-		$scope.events = $.csv.toObjects(reader.result)
+		var cleanCSV = reader.result.replace(/\cM/g, "\n"); // Remove pesky ^M chracters
+		$scope.events = $.csv.toObjects(cleanCSV);
 		$scope.$apply()
 	}
 
