@@ -5,6 +5,7 @@
 	<title>DUU Blast Generator</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -43,6 +44,9 @@
 		<md-input-container class="md-block" style="text-align:center">
 		<label> Header Blurb </label>
 		<textarea ng-model="blurb" value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
+		</br>
+		<md-button ng-click="newEvent()"><i class="icon-plus"></i> New Event </md-button>
+
 		</md-input-container>
 
 		<ul ui-sortable ng-model="events">
@@ -54,12 +58,17 @@
            				<span class="md-headline">{{event["Event Title"]}}</span> 
          		 	</md-card-title-text> 
         		</md-card-title>
+				
+				<md-input-container>	
+					<label> Event Title </label>
+					<textarea  ng-model="event['Event Title']"  value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
+				</md-input-container>
+
 				<md-input-container class="md-block">
 					<label> Event Blurb </label>
 					<textarea ng-model="event['Event Blurb']" value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
 				</md-input-container> 
-
-				<md-input-container>	
+				<md-input-container>
 					<label> Links: </label>
 					<textarea  ng-model="event['Hyperlinks to Include (if multiple, separate by commas)']"  value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
 				</md-input-container> 
@@ -68,6 +77,9 @@
 					<label> Image: </label>
 					<textarea  ng-model="event['image']"   value="" md-maxlength="500" rows=1 md-select-on-focus></textarea>
 				</md-input-container> 
+				<md-card-actions>
+					<md-button ng-click="deleteEvent(event)"> <i class="icon-remove"></i> Delete </md-button>
+				</md-card-actions>
 
       			</md-card> 
 
@@ -201,12 +213,11 @@
 											<div class="event_logo" style="width: 50%; margin: 0 auto;">
 												<img src="{{event['image']}}" alt="Event logo" width="100" height="100">
 											</div>
-											<div class="event_title" style="width: 50%; margin: 0 auto;">
-												<h3>
-													{{event.title}}
+											<div style="width: 50%; margin: 0 auto;">
+												<h3> 
+													{{event['Event Title']}}
 												</h3>
 											</div>
-
 											<p class="event_summary" style="width: 50%; margin: 0 auto;">
 												{{event["Event Blurb"].substring(0,100)}}
 											</p>
@@ -244,9 +255,9 @@
 											<div class="event_logo" style="width: 50%; margin: 0 auto;">
 												<img src="{{event['image']}}" alt="Event logo" width="100" height="100">
 											</div>
-											<div class="event_title" style="width: 50%; margin: 0 auto;">
-												<h3>
-													{{event.title}}
+											<div style="width: 50%; margin: 0 auto;">
+												<h3> 
+													{{event['Event Title']}}
 												</h3>
 											</div>
 
@@ -287,12 +298,11 @@
 												<div class="event_logo" style="width: 50%; margin: 0 auto;">
 													<img src="{{event['image']}}" alt="Event logo" width="100" height="100">
 												</div>
-												<div class="event_title" style="width: 50%; margin: 0 auto;">
-													<h3>
-														{{event.title}}
-													</h3>
-												</div>
-
+											<div style="width: 50%; margin: 0 auto;">
+												<h3> 
+													{{event['Event Title']}}
+												</h3>
+											</div>
 												<p class="event_summary" style="width: 50%; margin: 0 auto;">
 													{{event["Event Blurb"].substring(0,100)}}
 												</p>

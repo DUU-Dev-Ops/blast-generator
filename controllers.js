@@ -23,6 +23,16 @@ emailGenApp.controller('EmailGenCtrl', function($scope,$timeout, $mdSidenav, $lo
 		saveAs(blob, "email.html");
 		//alert("hi")
 	}
+	$scope.deleteEvent = function(event){
+		console.log(event)
+		var removeIndex = $scope.events.indexOf(event);
+		$scope.events.splice(removeIndex,1);
+	}
+	$scope.newEvent = function(){
+		if(!$scope.events) $scope.events=[];
+		var eventModel = {"Timestamp": "3/7/16 21:32", "Event Title": "", "DUU Committee(s) Involved with Event": "LDOC", "Event Blurb": "", "Hyperlinks to Include (if multiple, separate by commas)": ""};
+		$scope.events.unshift(eventModel);
+	}
 	  /**
      * Supplies a function that will continue to operate until the
      * time is up.
