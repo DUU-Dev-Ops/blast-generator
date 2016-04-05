@@ -8,7 +8,16 @@ emailGenApp.controller('EmailGenCtrl', function($scope,$timeout, $mdSidenav, $lo
 
 	reader.onload = function(e) {
 		var cleanCSV = reader.result.replace(/\cM/g, "\n"); // Remove pesky ^M chracters
-		$scope.events = $.csv.toObjects(cleanCSV);
+		$scope.events = $.grep($.csv.toObjects(cleanCSV), function(e) {
+      return e['Event Title'] != null;
+    });
+
+    $scope.events = $.map($scope.events, function(e) {
+      if(e["Event Blurb"].length > 147) {
+        e["Event Blurb"] = e["Event Blurb"].substring(0, 147) + "...";
+      }
+      return e;
+    });
 		$scope.$apply()
 	}
 
@@ -21,7 +30,6 @@ emailGenApp.controller('EmailGenCtrl', function($scope,$timeout, $mdSidenav, $lo
 	$scope.saveHTML = function() {
 		var blob = new Blob([$("#generated-email").html()], {type: "text/html;charset=utf-8"});
 		saveAs(blob, "email.html");
-		//alert("hi")
 	}
 	$scope.deleteEvent = function(event){
 		console.log(event)

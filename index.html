@@ -61,12 +61,12 @@
 				
 				<md-input-container>	
 					<label> Event Title </label>
-					<textarea  ng-model="event['Event Title']"  value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
+					<textarea  ng-model="event['Event Title']"  value="" md-maxlength="50" rows=5 md-select-on-focus></textarea>
 				</md-input-container>
 
 				<md-input-container class="md-block">
 					<label> Event Blurb </label>
-					<textarea ng-model="event['Event Blurb']" value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
+					<textarea ng-model="event['Event Blurb']" value="" md-maxlength="150" rows=5 md-select-on-focus></textarea>
 				</md-input-container> 
 				<md-input-container>
 					<label> Links: </label>
@@ -105,10 +105,11 @@
 		</div>
 		<br>
 		<br>
-			<div id="generated-email" style="margin-left:15%;margin-right:15%;border:2px solid black;">
-				<div style="text-align:center">
+			<div style="text-align:center">
 			<h2>Generated Email Preview:</h2>
 		</div>
+			<div id="generated-email" style="margin-left:15%;margin-right:15%;border:2px solid black;">
+			
 
 			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 			<html>
@@ -127,6 +128,10 @@
 					.ExternalClass { width: 100%; background-color: #F6F6F6; }
 					body { width: 100%; background-color: #f6f6f6; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; font-family: Arial, Times, serif }
 					table { border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+
+					td.mobile.content {
+						vertical-align: top;
+					}
 
 					@-ms-viewport{ width: device-width; }
 
@@ -224,11 +229,11 @@
 												</h3>
 											</div>
 											<p class="event_summary" style="width: 50%; margin: 0 auto;">
-												{{event["Event Blurb"].substring(0,100)}}
+												{{event["Event Blurb"]}}
 											</p>
 
 											<div class="event_link" align="right">
-												<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">Learn More</a>
+												<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">More...</a>
 											</div>
 										</div>
 									</td>
@@ -271,7 +276,7 @@
 											</p>
 
 											<div class="event_link" align="right">
-												<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">Link</a>
+												<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">More...</a>
 											</div>
 										</div>
 									</td>           
@@ -313,7 +318,7 @@
 												</p>
 
 												<div class="event_link" align="right">
-													<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">Link</a>
+													<a href="{{event['Hyperlinks to Include (if multiple, separate by commas)'].split(',')[0]}}">More...</a>
 												</div>
 											</div>
 										</td>  
