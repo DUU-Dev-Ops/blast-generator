@@ -44,45 +44,51 @@
 			</div>
 
 			<md-input-container class="md-block" style="text-align:center">
+				<label> Blast Date </label>
+				<input ng-model="date" type="date" md-select-on-focus></input>
+				</br>
+			</md-input-container>
+			<md-input-container class="md-block" style="text-align:center">
 				<label> Header Blurb </label>
 				<textarea ng-model="blurb" value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
 				</br>
 				<md-button ng-click="newEvent()"><i class="icon-plus"></i> New Event </md-button>
-
 			</md-input-container>
 
 			<ul ui-sortable ng-model="events">
 				<li class="event" ng-repeat="event in events">
 					<div>
-						<md-card>
+						<md-card layout-padding ng-init="open = false">
 							<md-card-title>
 								<md-card-title-text>
 									<span class="md-headline">{{event["Event Title"]}}</span>
 								</md-card-title-text>
+								<md-button class="md-icon-button" ng-click="console.log(open); open = !open">
+									<md-icon md-font-library="material-icons" ng-show="open">keyboard_arrow_up</md-icon>
+									<md-icon md-font-library="material-icons" ng-show="!open">edit</md-icon>
+								</md-button>
+								<md-button class="md-icon-button" ng-click="deleteEvent(event)">
+									<md-icon md-font-library="material-icons">delete</md-icon>
+								</md-button>
 							</md-card-title>
-
-							<md-input-container>
+							<md-input-container ng-show="open">
 								<label> Event Title </label>
 								<textarea ng-model="event['Event Title']" value="" md-maxlength="50" rows=5 md-select-on-focus></textarea>
 							</md-input-container>
 
-							<md-input-container class="md-block">
+							<md-input-container ng-show="open" class="md-block">
 								<label> Event Blurb </label>
 								<textarea ng-model="event['Event Blurb']" value="" md-maxlength="150" rows=5 md-select-on-focus></textarea>
 							</md-input-container>
-							<md-input-container>
+							<md-input-container ng-show="open">
 								<label> Links: </label>
 								<textarea ng-model="event['Hyperlinks to Include (if multiple, separate by commas)']" value="" md-maxlength="500" rows=5 md-select-on-focus></textarea>
 							</md-input-container>
 
-							<md-input-container>
+							<md-input-container ng-show="open">
 								<label> Image: </label>
 								<textarea ng-model="event['image']" value="" md-maxlength="500" rows=1 md-select-on-focus></textarea>
 							</md-input-container>
-							<md-card-actions>
-								<md-button ng-click="deleteEvent(event)"> <i class="icon-remove"></i> Delete </md-button>
-							</md-card-actions>
-
 						</md-card>
 
 					</div>
@@ -139,7 +145,7 @@
 								margin: 0;
 								padding: 0;
 								-webkit-font-smoothing: antialiased;
-								font-family: Arial, Times, serif
+								font-family: Helvetica, Arial, Times, serif
 							}
 
 							.duuheader {
@@ -163,13 +169,27 @@
 								text-align: left;
 							}
 
-							#inner-wrapper> div {
+							#inner-wrapper> .event {
 								padding: 20px;
 							}
 
 							.event {
 								padding: 10px;
 								margin: 0;
+							}
+
+							.blast-blurb {
+								padding: 20px;
+								padding-bottom: 0px;
+							}
+
+							.blast-date {
+								text-align: center;
+								font-weight: 100;
+								font-family: "Lato Light", "Helvetica Light", Helvetica, Arial, sans;
+								font-size: 32px;
+								padding-top: 20px;
+								margin-bottom: 0;
 							}
 
 							.event-thumb {
@@ -212,7 +232,10 @@
 						<!-- Start Background -->
 						<div id="wrapper">
 							<div id="inner-wrapper">
-								<div>
+								<div class="blast-date">
+									DUU Blast {{ date | date : 'MM-dd-yy'}}
+								</div>
+								<div class="blast-blurb">
 									{{blurb}}
 								</div>
 								<div class="event" ng-repeat="event in events">
@@ -220,7 +243,7 @@
 										<img src="{{event['image'].length > 2 ? event['image'] : 'https://raw.githubusercontent.com/DUU-Dev-Ops/blast-generator/master/logos/' + event['DUU Committee(s) Involved with Event'].toLowerCase() + '.png'}}" alt="Event logo" width="100" height="100">
 									</div>
 									<div class="event-desc">
-										<h3>
+										<h3 class="event-title">
 						{{event['Event Title']}}
 					</h3>
 										<p>
