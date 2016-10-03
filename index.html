@@ -132,13 +132,13 @@
 					<head>
 
 						<title>DUU Blast</title>
-						<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+						<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 						<!--[if !mso]>
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<!--<![endif]-->
 
-						<style type="text/css">
+						<!--style type="text/css">
 							body {
 								width: 100%;
 								background-color: #f6f6f6;
@@ -205,7 +205,7 @@
 								margin-left: 120px;
 								margin-top: -10px;
 							}
-						</style>
+						</style-->
 
 						<!--[if gte mso 15]>
     <style type="text/css">
@@ -216,33 +216,34 @@
 
 					</head>
 
-					<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" style="background-color:#F6F6F6; font-family:Arial,serif; margin:0; padding:0; min-width: 100%; -webkit-text-size-adjust:none; -ms-text-size-adjust:none;">
+					<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" style="background-color: #F6F6F6;font-family: Arial,serif;margin: 0;padding: 0;min-width: 100%;-webkit-text-size-adjust: none;-ms-text-size-adjust: none;width: 100%;-webkit-font-smoothing: antialiased;">
 
 						<!--[if !mso]><!-- -->
 						<img style="min-width:640px; display:block; margin:0; padding:0" class="mobileOff" width="640" height="1" src="http://s23.postimg.org/rc3d9uryv/spacer.gif">
 						<!--<![endif]-->
 
-						<div class="duuheader">
-							<a href="https://www.instagram.com/dukeunion/"><img height="100px" src="http://s18.postimg.org/edkef33zd/insta64.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="https://twitter.com/dukeunion"><img height="100px" src="http://s18.postimg.org/e22y2bnjd/twitter64.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="http://duuke.org/"><img src="http://s18.postimg.org/eu5m1irqd/logo.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="https://www.facebook.com/dukeuniversityunion?"><img height="100px" src="http://s18.postimg.org/kwd8s0g6h/fb64.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="mailto:duu@duke.edu"><img height="100px" src="http://s18.postimg.org/mlmc02vvt/email64.png" /></a>
+						<div class="duuheader" style="width: 100%;background-color: #001A57;text-align: center;height: 100px;">
+							<a href="https://www.instagram.com/dukeunion/"><img height="100px" src="http://s18.postimg.org/edkef33zd/insta64.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="https://twitter.com/dukeunion"><img height="100px" src="http://s18.postimg.org/e22y2bnjd/twitter64.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="http://duuke.org/"><img src="http://s18.postimg.org/eu5m1irqd/logo.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="https://www.facebook.com/dukeuniversityunion?"><img height="100px" src="http://s18.postimg.org/kwd8s0g6h/fb64.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="mailto:duu@duke.edu"><img height="100px" src="http://s18.postimg.org/mlmc02vvt/email64.png"></a>
 						</div>
 						<!-- Start Background -->
-						<div id="wrapper">
-							<div id="inner-wrapper">
-								<div class="blast-date">
+						<div id="wrapper" style="width: 100%;text-align: 0;background-color: #f6f6f6;">
+							<div id="inner-wrapper" style="margin-left: auto;margin-right: auto;max-width: 640px;background-color: white;text-align: left;">
+								<div class="blast-date" style="text-align: center;font-weight: 100;font-family: &quot;Lato Light&quot;, &quot;Helvetica Light&quot;, Helvetica, Arial, sans;font-size: 32px;padding-top: 20px;margin-bottom: 0;">
 									DUU Blast {{ date | date : 'MM-dd-yy'}}
 								</div>
-								<div class="blast-blurb">
+								<div class="blast-blurb" style="padding: 20px;padding-bottom: 0px;">
 									{{blurb}}
 								</div>
-								<div class="event" ng-repeat="event in events">
-									<div class="event-thumb">
-										<img src="{{event['image'].length > 2 ? event['image'] : 'https://raw.githubusercontent.com/DUU-Dev-Ops/blast-generator/master/logos/' + event['DUU Committee(s) Involved with Event'].toLowerCase() + '.png'}}" alt="Event logo" width="100" height="100">
+								<div class="event" ng-repeat="event in events" style="padding: 20px;margin: 0;">
+									<div class="event-thumb" style="float: left;margin-top: 10px;">
+										<img src="{{event['image'].length > 2 ? event['image'] : 'https://raw.githubusercontent.com/DUU-Dev-Ops/blast-generator/master/logos/' + event['DUU Committee(s) Involved with Event'].toLowerCase() + '.png'}}" alt="Event logo" width="100" height="100"
+														style="display: block;">
 									</div>
-									<div class="event-desc">
+									<div class="event-desc" style="margin-left: 120px;margin-top: -10px;">
 										<h3 class="event-title">
 						{{event['Event Title']}}
 					</h3>
